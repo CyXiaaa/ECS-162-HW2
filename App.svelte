@@ -80,7 +80,9 @@
     }
 
     //get the first three articles imges
-    const firstArticleImage = document.querySelector("#firstArticle img") as HTMLImageElement;
+    const firstArticleImage = document.querySelector(
+      "#firstArticle img",
+    ) as HTMLImageElement;
     if (firstArticleImage) {
       firstArticleImage.id = "firstArticleImage";
       firstArticleImage.src = firstArticle.multimedia.default.url;
@@ -89,7 +91,9 @@
       firstArticleImage.height = 250;
     }
 
-    const secondArticleImage = document.querySelector("#secondArticle img") as HTMLImageElement;
+    const secondArticleImage = document.querySelector(
+      "#secondArticle img",
+    ) as HTMLImageElement;
     if (secondArticleImage) {
       secondArticleImage.id = "secondArticleImage";
       secondArticleImage.src = secondArticle.multimedia.default.url;
@@ -98,13 +102,36 @@
       secondArticleImage.height = 250;
     }
 
-    const thirdArticleImage = document.querySelector("#thirdArticle img") as HTMLImageElement;
+    const thirdArticleImage = document.querySelector(
+      "#thirdArticle img",
+    ) as HTMLImageElement;
     if (thirdArticleImage) {
       thirdArticleImage.id = "thirdArticleImage";
       thirdArticleImage.src = thirdArticle.multimedia.default.url;
       thirdArticleImage.alt = thirdArticle.headline.main;
       thirdArticleImage.width = 250;
       thirdArticleImage.height = 250;
+    }
+    // Set the first article link
+    const firstArticleLink = document.querySelector(
+      "#firstArticleLink",
+    ) as HTMLAnchorElement;
+    if (firstArticleLink) {
+      firstArticleLink.href = firstArticle.web_url; // Set the article's URL
+    }
+
+    const secondArticleLink = document.querySelector(
+      "#secondArticleLink",
+    ) as HTMLAnchorElement;
+    if (secondArticleLink) {
+      secondArticleLink.href = secondArticle.web_url; // Set the article's URL
+    }
+
+    const thirdArticleLink = document.querySelector(
+      "#thirdArticleLink",
+    ) as HTMLAnchorElement;
+    if (thirdArticleLink) {
+      thirdArticleLink.href = thirdArticle.web_url; // Set the article's URL
     }
   }
 
@@ -121,27 +148,37 @@
       <hr />
     </div>
     <div id="firstArticle">
-      <h2></h2>
-      <p></p>
-      <img/>
+      <a id="firstArticleLink" target="_blank" rel="noopener noreferrer">
+        <h2></h2>
+        <p></p>
+      </a>
+      <img />
     </div>
 
     <div id="secondArticle">
-      <h2>secondArticle</h2>
-      <img/>
-      <p></p>
+      <a id="secondArticleLink" target="_blank" rel="noopener noreferrer">
+        <h2>secondArticle</h2>
+      </a>
+      <img />
+      <a id="secondArticleLink" target="_blank" rel="noopener noreferrer">
+        <p></p>
+      </a>
     </div>
 
     <div id="thirdArticle">
-      <h2>thirdArticle</h2>
-      <p></p>
-      <img/>
+      <a id="thirdArticleLink" target="_blank" rel="noopener noreferrer">
+        <h2>thirdArticle</h2>
+        <p></p>
+      </a>
+      <img />
     </div>
     <hr id="last" />
   </div>
 
   <div style="text-align: center;">
-    <button id="button" on:click={redirectToNYT}>Clik me to The New York Times</button>
+    <button id="button" on:click={redirectToNYT}
+      >Clik me to The New York Times</button
+    >
   </div>
 </main>
 
@@ -299,5 +336,15 @@
   #button:hover {
     background-color: #ffffff;
     color: green;
+    transition-duration: 0.4s;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover h2 {
+    text-decoration: none;
+    color: gray;
   }
 </style>
